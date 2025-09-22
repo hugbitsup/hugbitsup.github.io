@@ -1,0 +1,401 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HUGBIT - Crafting the Future of Applications</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=Noto+Sans+JP:wght@400;700&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    
+    <style>
+        /* --- グローバル設定 & 変数 --- */
+        :root {
+            --primary-color: #2F6B72; /* ロゴのメインカラー */
+            --primary-color-dark: #245459;
+            --text-color: #333;
+            --text-color-light: #f4f7f6;
+            --bg-color: #ffffff;
+            --light-gray: #f4f7f6;
+            --border-radius: 12px;
+            --shadow: 0 8px 30px rgba(0, 0, 0, 0.05);
+        }
+
+        *, *::before, *::after {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Noto Sans JP', 'Inter', sans-serif;
+            line-height: 1.8;
+            color: var(--text-color);
+            background-color: var(--bg-color);
+            -webkit-font-smoothing: antialiased;
+        }
+
+        /* --- 共通コンポーネント --- */
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .section-title {
+            font-size: 2.5rem;
+            font-weight: 700;
+            text-align: center;
+            margin-bottom: 50px;
+            color: var(--primary-color);
+        }
+
+        .content-section {
+            padding: 100px 0;
+        }
+        .content-section-alt {
+            padding: 100px 0;
+            background-color: var(--light-gray);
+        }
+
+        .text-center { text-align: center; }
+
+        .cta-button {
+            display: inline-block;
+            background-color: var(--primary-color);
+            color: var(--text-color-light);
+            padding: 14px 32px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            font-family: 'Inter', sans-serif;
+            transition: background-color 0.3s ease, transform 0.3s ease;
+        }
+
+        .cta-button:hover {
+            background-color: var(--primary-color-dark);
+            transform: translateY(-3px);
+        }
+
+        /* --- ヘッダー --- */
+        .header {
+            position: fixed;
+            width: 100%;
+            top: 0;
+            left: 0;
+            z-index: 1000;
+            padding: 15px 0;
+            transition: background-color 0.3s ease, box-shadow 0.3s ease;
+            background-color: rgba(255, 255, 255, 0.8);
+            backdrop-filter: blur(10px);
+        }
+
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo-link {
+            display: flex;
+            align-items: center;
+            text-decoration: none;
+            color: var(--primary-color);
+            font-weight: 700;
+            font-size: 1.5rem;
+        }
+
+        .logo {
+            height: 40px;
+            margin-right: 12px;
+        }
+
+        .nav ul {
+            list-style: none;
+            display: flex;
+            gap: 30px;
+        }
+
+        .nav a {
+            text-decoration: none;
+            color: var(--text-color);
+            font-weight: 600;
+            position: relative;
+            padding: 5px 0;
+        }
+
+        .nav a::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background-color: var(--primary-color);
+            transition: width 0.3s ease;
+        }
+
+        .nav a:hover::after {
+            width: 100%;
+        }
+
+        /* --- ヒーローセクション --- */
+        #hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: var(--text-color-light);
+            background: linear-gradient(-45deg, #e0f7fa, #b2dfdb, #80cbc4, #4db6ac);
+            background-size: 400% 400%;
+            animation: gradientBG 15s ease infinite;
+        }
+
+        @keyframes gradientBG {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        .hero-content h1 {
+            font-size: 3.5rem;
+            font-weight: 700;
+            margin-bottom: 20px;
+            color: var(--primary-color-dark);
+        }
+
+        .hero-content p {
+            font-size: 1.2rem;
+            max-width: 600px;
+            margin: 0 auto 30px;
+            color: #004d40;
+        }
+
+        /* --- 事業内容セクション --- */
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .service-card {
+            background: var(--bg-color);
+            padding: 40px;
+            border-radius: var(--border-radius);
+            text-align: center;
+            box-shadow: var(--shadow);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .service-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.1);
+        }
+
+        .service-card i {
+            font-size: 2.5rem;
+            color: var(--primary-color);
+            margin-bottom: 20px;
+        }
+
+        .service-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 10px;
+        }
+
+        /* --- 理念セクション --- */
+        .philosophy-container {
+            display: flex;
+            align-items: center;
+            gap: 60px;
+        }
+
+        .philosophy-text { flex: 1; }
+        .philosophy-image-wrapper { flex: 1; }
+
+        .philosophy-text .section-title {
+            text-align: left;
+        }
+
+        .philosophy-text h3 {
+            font-size: 1.8rem;
+            font-family: 'Inter', sans-serif;
+            margin-bottom: 15px;
+            color: var(--text-color);
+        }
+
+        .philosophy-placeholder {
+            width: 100%;
+            height: 350px;
+            background-color: #dce7e6;
+            border-radius: var(--border-radius);
+        }
+
+        /* --- フッター --- */
+        .footer {
+            background-color: var(--primary-color-dark);
+            color: var(--text-color-light);
+            padding: 30px 0;
+            text-align: center;
+        }
+        .footer-logo {
+            height: 30px;
+            opacity: 0.8;
+            margin-bottom: 10px;
+        }
+
+        .footer-content p {
+            font-size: 0.9rem;
+            opacity: 0.7;
+        }
+
+        /* --- アニメーション --- */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.8s ease, transform 0.8s ease;
+        }
+
+        .fade-in.is-visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* --- レスポンシブ対応 --- */
+        @media (max-width: 768px) {
+            .section-title { font-size: 2rem; }
+            
+            .header { padding: 10px 0; }
+            .nav { display: none; }
+
+            .hero-content h1 { font-size: 2.5rem; }
+            .hero-content p { font-size: 1rem; }
+
+            .philosophy-container {
+                flex-direction: column;
+                text-align: center;
+            }
+            .philosophy-text .section-title {
+                text-align: center;
+            }
+        }
+    </style>
+    </head>
+<body>
+
+    <header class="header">
+        <div class="container header-container">
+            <a href="#" class="logo-link">
+                <img src="logo.png" alt="HUGBIT Logo" class="logo">
+                <span>HUGBIT</span>
+            </a>
+            <nav class="nav">
+                <ul>
+                    <li><a href="#services">事業内容</a></li>
+                    <li><a href="#philosophy">私たちの理念</a></li>
+                    <li><a href="#contact">お問い合わせ</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <section id="hero">
+            <div class="container hero-content">
+                <h1 class="fade-in">未来を形にするアプリケーションを。</h1>
+                <p class="fade-in">HUGBITは、ユーザーの心に響く体験をデザインし、<br>革新的な技術で未来のスタンダードを創造します。</p>
+                <a href="#services" class="cta-button fade-in">事業内容を見る</a>
+            </div>
+        </section>
+
+        <section id="services" class="content-section">
+            <div class="container">
+                <h2 class="section-title fade-in">事業内容</h2>
+                <div class="services-grid">
+                    <div class="service-card fade-in">
+                        <i class="fas fa-magic"></i>
+                        <h3>UI/UX デザイン</h3>
+                        <p>直感的で美しい。ユーザーが思わず夢中になるような、最高のユーザー体験を設計します。</p>
+                    </div>
+                    <div class="service-card fade-in">
+                        <i class="fas fa-mobile-alt"></i>
+                        <h3>アプリケーション開発</h3>
+                        <p>iOS、Android、Webアプリケーションまで。アイデアを最新技術で、高速かつ高品質に実現します。</p>
+                    </div>
+                    <div class="service-card fade-in">
+                        <i class="fas fa-cloud"></i>
+                        <h3>クラウド & インフラ構築</h3>
+                        <p>スケーラブルで堅牢なバックエンドを構築。ビジネスの成長を支えるインフラを提供します。</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="philosophy" class="content-section-alt">
+            <div class="container philosophy-container">
+                <div class="philosophy-text fade-in">
+                    <h2 class="section-title">私たちの理念</h2>
+                    <h3>"HUG the BIT"</h3>
+                    <p>私たちは、一つひとつのデータ（Bit）に愛情（Hug）を込めて、テクノロジーと人との間に、温かいつながりを生み出します。ただ作るだけではない。作り手の情熱が、使う人の毎日に小さな幸せを届ける。それがHUGBITの目指すモノづくりです。</p>
+                </div>
+                <div class="philosophy-image-wrapper fade-in">
+                    <div class="philosophy-placeholder"></div>
+                </div>
+            </div>
+        </section>
+
+        <section id="contact" class="content-section">
+            <div class="container text-center">
+                <h2 class="section-title fade-in">新しい価値を、共に創造しませんか？</h2>
+                <p class="fade-in">私たちの技術とデザインで、あなたのアイデアを最高の形で実現します。<br>まずはお気軽にご相談ください。</p>
+                <a href="mailto:contact@hugbit.com" class="cta-button fade-in">お問い合わせ</a>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <a href="#"><img src="logo.png" alt="HUGBIT Logo" class="footer-logo"></a>
+                <p>&copy; 2025 HUGBIT Inc. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+
+            // スクロールで要素をフェードインさせる機能
+            const fadeinElements = document.querySelectorAll('.fade-in');
+
+            const observerOptions = {
+                root: null,
+                rootMargin: '0px',
+                threshold: 0.1 // 要素が10%見えたら発火
+            };
+
+            const observer = new IntersectionObserver((entries, observer) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('is-visible');
+                        observer.unobserve(entry.target); // 一度表示したら監視を停止
+                    }
+                });
+            }, observerOptions);
+
+            fadeinElements.forEach(el => {
+                observer.observe(el);
+            });
+
+        });
+    </script>
+    </body>
+</html>
