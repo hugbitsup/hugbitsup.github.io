@@ -3,27 +3,31 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>HUGBIT - Crafting the Future of Applications</title>
+    <title>HUGBIT - Innovative Application Development</title>
     
+    <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=Noto+Sans+JP:wght@400;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=Noto+Sans+JP:wght@400;500;700&display=swap" rel="stylesheet">
     
+    <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
     
+    <!-- ▼ CSS ▼ -->
     <style>
-        /* --- グローバル設定 & 変数 --- */
+        /* --- デザイン変数 --- */
         :root {
-            --primary-color: #2F6B72; /* ロゴのメインカラー */
-            --primary-color-dark: #245459;
-            --text-color: #333;
-            --text-color-light: #f4f7f6;
-            --bg-color: #ffffff;
-            --light-gray: #f4f7f6;
-            --border-radius: 12px;
-            --shadow: 0 8px 30px rgba(0, 0, 0, 0.05);
+            --primary-color: #2F6B72;
+            --primary-glow: rgba(47, 107, 114, 0.5);
+            --bg-color: #0d1117; /* GitHub Dark Dimmed like */
+            --surface-color: rgba(30, 41, 59, 0.5); /* 半透明パネルの背景 */
+            --border-color: rgba(148, 163, 184, 0.2);
+            --text-primary: #f1f5f9;
+            --text-secondary: #94a3b8;
+            --border-radius: 16px;
         }
 
+        /* --- 基本設定 --- */
         *, *::before, *::after {
             box-sizing: border-box;
             margin: 0;
@@ -37,8 +41,10 @@
         body {
             font-family: 'Noto Sans JP', 'Inter', sans-serif;
             line-height: 1.8;
-            color: var(--text-color);
+            color: var(--text-secondary);
             background-color: var(--bg-color);
+            background-image: radial-gradient(circle at 1px 1px, rgba(255,255,255,0.05) 1px, transparent 0);
+            background-size: 20px 20px;
             -webkit-font-smoothing: antialiased;
         }
 
@@ -49,41 +55,45 @@
             padding: 0 20px;
         }
 
+        .section {
+            padding: 120px 0;
+        }
+
         .section-title {
-            font-size: 2.5rem;
+            font-size: 2.8rem;
             font-weight: 700;
             text-align: center;
-            margin-bottom: 50px;
+            margin-bottom: 10px;
+            color: var(--text-primary);
+        }
+
+        .section-subtitle {
+            text-align: center;
+            font-size: 1.1rem;
+            margin-bottom: 60px;
             color: var(--primary-color);
+            font-weight: 600;
         }
-
-        .content-section {
-            padding: 100px 0;
-        }
-        .content-section-alt {
-            padding: 100px 0;
-            background-color: var(--light-gray);
-        }
-
-        .text-center { text-align: center; }
 
         .cta-button {
             display: inline-block;
-            background-color: var(--primary-color);
-            color: var(--text-color-light);
-            padding: 14px 32px;
+            background: linear-gradient(45deg, var(--primary-color), #3b8b95);
+            color: var(--text-primary);
+            padding: 14px 36px;
             border-radius: 50px;
             text-decoration: none;
             font-weight: 600;
             font-family: 'Inter', sans-serif;
-            transition: background-color 0.3s ease, transform 0.3s ease;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            border: none;
+            box-shadow: 0 0 20px var(--primary-glow);
         }
 
         .cta-button:hover {
-            background-color: var(--primary-color-dark);
-            transform: translateY(-3px);
+            transform: translateY(-4px) scale(1.05);
+            box-shadow: 0 0 30px var(--primary-glow);
         }
-
+        
         /* --- ヘッダー --- */
         .header {
             position: fixed;
@@ -91,10 +101,10 @@
             top: 0;
             left: 0;
             z-index: 1000;
-            padding: 15px 0;
-            transition: background-color 0.3s ease, box-shadow 0.3s ease;
-            background-color: rgba(255, 255, 255, 0.8);
+            padding: 20px 0;
+            background: rgba(13, 17, 23, 0.6);
             backdrop-filter: blur(10px);
+            border-bottom: 1px solid var(--border-color);
         }
 
         .header-container {
@@ -107,7 +117,7 @@
             display: flex;
             align-items: center;
             text-decoration: none;
-            color: var(--primary-color);
+            color: var(--text-primary);
             font-weight: 700;
             font-size: 1.5rem;
         }
@@ -120,30 +130,17 @@
         .nav ul {
             list-style: none;
             display: flex;
-            gap: 30px;
+            gap: 35px;
         }
 
         .nav a {
             text-decoration: none;
-            color: var(--text-color);
-            font-weight: 600;
-            position: relative;
-            padding: 5px 0;
+            color: var(--text-secondary);
+            font-weight: 500;
+            transition: color 0.3s ease;
         }
-
-        .nav a::after {
-            content: '';
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            width: 0;
-            height: 2px;
-            background-color: var(--primary-color);
-            transition: width 0.3s ease;
-        }
-
-        .nav a:hover::after {
-            width: 100%;
+        .nav a:hover {
+            color: var(--text-primary);
         }
 
         /* --- ヒーローセクション --- */
@@ -153,115 +150,129 @@
             align-items: center;
             justify-content: center;
             text-align: center;
-            color: var(--text-color-light);
-            background: linear-gradient(-45deg, #e0f7fa, #b2dfdb, #80cbc4, #4db6ac);
-            background-size: 400% 400%;
-            animation: gradientBG 15s ease infinite;
+            padding-top: 80px; /* ヘッダー分 */
         }
-
-        @keyframes gradientBG {
-            0% { background-position: 0% 50%; }
-            50% { background-position: 100% 50%; }
-            100% { background-position: 0% 50%; }
-        }
-
+        
         .hero-content h1 {
-            font-size: 3.5rem;
-            font-weight: 700;
+            font-size: 4rem;
             margin-bottom: 20px;
-            color: var(--primary-color-dark);
+            color: var(--text-primary);
+            line-height: 1.2;
         }
-
+        
         .hero-content p {
-            font-size: 1.2rem;
-            max-width: 600px;
-            margin: 0 auto 30px;
-            color: #004d40;
+            font-size: 1.25rem;
+            max-width: 650px;
+            margin: 0 auto 40px;
         }
 
-        /* --- 事業内容セクション --- */
-        .services-grid {
+        /* --- プロセスセクション --- */
+        .process-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            grid-template-columns: repeat(3, 1fr);
             gap: 30px;
         }
 
-        .service-card {
-            background: var(--bg-color);
+        .process-card {
+            position: relative;
+            background: var(--surface-color);
             padding: 40px;
             border-radius: var(--border-radius);
-            text-align: center;
-            box-shadow: var(--shadow);
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            border: 1px solid var(--border-color);
+            backdrop-filter: blur(5px);
+            overflow: hidden;
+            transition: transform 0.3s ease, border-color 0.3s ease;
         }
-
-        .service-card:hover {
+        
+        .process-card:hover {
             transform: translateY(-10px);
-            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.1);
+            border-color: var(--primary-glow);
         }
 
-        .service-card i {
-            font-size: 2.5rem;
+        /* カードのライティングエフェクト */
+        .process-card::before {
+            content: "";
+            position: absolute;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
+            background: radial-gradient(800px circle at var(--mouse-x) var(--mouse-y), rgba(255, 255, 255, 0.06), transparent 40%);
+            opacity: 0;
+            transition: opacity 0.5s;
+            z-index: 0;
+        }
+
+        .process-card:hover::before {
+            opacity: 1;
+        }
+
+        .process-card > * {
+            position: relative; /* エフェクトの上にコンテンツが来るように */
+            z-index: 1;
+        }
+
+        .process-card .step {
+            font-size: 1rem;
+            font-weight: 700;
             color: var(--primary-color);
-            margin-bottom: 20px;
+            margin-bottom: 15px;
         }
-
-        .service-card h3 {
-            font-size: 1.5rem;
-            margin-bottom: 10px;
+        .process-card h3 {
+            font-size: 1.6rem;
+            margin-bottom: 15px;
+            color: var(--text-primary);
         }
-
+        
         /* --- 理念セクション --- */
+        #philosophy {
+            background: var(--surface-color);
+            border-top: 1px solid var(--border-color);
+            border-bottom: 1px solid var(--border-color);
+        }
+
         .philosophy-container {
             display: flex;
             align-items: center;
             gap: 60px;
         }
+        .philosophy-text { flex: 3; }
+        .philosophy-image-wrapper { 
+            flex: 2;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        
+        .philosophy-logo {
+            width: 200px;
+            opacity: 0.1;
+            filter: grayscale(100%);
+        }
 
-        .philosophy-text { flex: 1; }
-        .philosophy-image-wrapper { flex: 1; }
-
-        .philosophy-text .section-title {
+        .philosophy-text .section-title,
+        .philosophy-text .section-subtitle {
             text-align: left;
         }
-
         .philosophy-text h3 {
-            font-size: 1.8rem;
-            font-family: 'Inter', sans-serif;
+            font-size: 2rem;
+            color: var(--text-primary);
             margin-bottom: 15px;
-            color: var(--text-color);
-        }
-
-        .philosophy-placeholder {
-            width: 100%;
-            height: 350px;
-            background-color: #dce7e6;
-            border-radius: var(--border-radius);
         }
 
         /* --- フッター --- */
         .footer {
-            background-color: var(--primary-color-dark);
-            color: var(--text-color-light);
-            padding: 30px 0;
+            padding: 40px 0;
             text-align: center;
+            border-top: 1px solid var(--border-color);
         }
-        .footer-logo {
-            height: 30px;
-            opacity: 0.8;
-            margin-bottom: 10px;
-        }
-
-        .footer-content p {
+        .footer p {
             font-size: 0.9rem;
-            opacity: 0.7;
         }
-
+        
         /* --- アニメーション --- */
         .fade-in {
             opacity: 0;
-            transform: translateY(20px);
-            transition: opacity 0.8s ease, transform 0.8s ease;
+            transform: translateY(30px);
+            transition: opacity 0.8s cubic-bezier(0.215, 0.610, 0.355, 1), transform 0.8s cubic-bezier(0.215, 0.610, 0.355, 1);
         }
 
         .fade-in.is-visible {
@@ -270,27 +281,31 @@
         }
 
         /* --- レスポンシブ対応 --- */
-        @media (max-width: 768px) {
-            .section-title { font-size: 2rem; }
-            
-            .header { padding: 10px 0; }
-            .nav { display: none; }
-
-            .hero-content h1 { font-size: 2.5rem; }
-            .hero-content p { font-size: 1rem; }
-
+        @media (max-width: 900px) {
+            .process-grid {
+                grid-template-columns: 1fr;
+            }
             .philosophy-container {
                 flex-direction: column;
                 text-align: center;
             }
-            .philosophy-text .section-title {
+            .philosophy-text .section-title,
+            .philosophy-text .section-subtitle {
                 text-align: center;
             }
         }
+
+        @media (max-width: 768px) {
+            .section-title { font-size: 2.2rem; }
+            .nav { display: none; }
+            .hero-content h1 { font-size: 2.8rem; }
+            .hero-content p { font-size: 1.1rem; }
+        }
     </style>
-    </head>
+</head>
 <body>
 
+    <!-- ヘッダー -->
     <header class="header">
         <div class="container header-container">
             <a href="#" class="logo-link">
@@ -299,8 +314,8 @@
             </a>
             <nav class="nav">
                 <ul>
-                    <li><a href="#services">事業内容</a></li>
-                    <li><a href="#philosophy">私たちの理念</a></li>
+                    <li><a href="#process">開発プロセス</a></li>
+                    <li><a href="#philosophy">理念</a></li>
                     <li><a href="#contact">お問い合わせ</a></li>
                 </ul>
             </nav>
@@ -308,94 +323,103 @@
     </header>
 
     <main>
+        <!-- ヒーローセクション -->
         <section id="hero">
             <div class="container hero-content">
-                <h1 class="fade-in">未来を形にするアプリケーションを。</h1>
-                <p class="fade-in">HUGBITは、ユーザーの心に響く体験をデザインし、<br>革新的な技術で未来のスタンダードを創造します。</p>
-                <a href="#services" class="cta-button fade-in">事業内容を見る</a>
+                <h1 class="fade-in">コードに、魂を込める。</h1>
+                <p class="fade-in">HUGBITはアプリケーション開発のプロフェッショナル集団です。<br>卓越した技術と情熱で、想像を超えるデジタル体験を創造します。</p>
+                <a href="#process" class="cta-button fade-in">私たちの仕事を見る</a>
             </div>
         </section>
 
-        <section id="services" class="content-section">
+        <!-- 開発プロセスセクション -->
+        <section id="process" class="section">
             <div class="container">
-                <h2 class="section-title fade-in">事業内容</h2>
-                <div class="services-grid">
-                    <div class="service-card fade-in">
-                        <i class="fas fa-magic"></i>
-                        <h3>UI/UX デザイン</h3>
-                        <p>直感的で美しい。ユーザーが思わず夢中になるような、最高のユーザー体験を設計します。</p>
+                <h2 class="section-title fade-in">Application Development</h2>
+                <p class="section-subtitle fade-in">唯一無二のアプリケーションが生まれるまで</p>
+                <div class="process-grid">
+                    <!-- カード1 -->
+                    <div class="process-card fade-in" style="transition-delay: 100ms;">
+                        <div class="step">01. PLAN</div>
+                        <h3>緻密な設計</h3>
+                        <p>アイデアの本質を捉え、成功へのロードマップを描きます。ビジネスゴールとユーザー体験を両立する、盤石なアーキテクチャを設計します。</p>
                     </div>
-                    <div class="service-card fade-in">
-                        <i class="fas fa-mobile-alt"></i>
-                        <h3>アプリケーション開発</h3>
-                        <p>iOS、Android、Webアプリケーションまで。アイデアを最新技術で、高速かつ高品質に実現します。</p>
+                    <!-- カード2 -->
+                    <div class="process-card fade-in" style="transition-delay: 200ms;">
+                        <div class="step">02. DEVELOP</div>
+                        <h3>創造的な実装</h3>
+                        <p>モダンな技術スタックを駆使し、クリーンでスケーラブルなコードを構築。アジャイルな開発プロセスで、迅速かつ柔軟に価値を提供します。</p>
                     </div>
-                    <div class="service-card fade-in">
-                        <i class="fas fa-cloud"></i>
-                        <h3>クラウド & インフラ構築</h3>
-                        <p>スケーラブルで堅牢なバックエンドを構築。ビジネスの成長を支えるインフラを提供します。</p>
+                    <!-- カード3 -->
+                    <div class="process-card fade-in" style="transition-delay: 300ms;">
+                        <div class="step">03. RELEASE</div>
+                        <h3>完璧な公開と運用</h3>
+                        <p>厳格なテストを経て、世界へ。リリース後も継続的な改善と安定運用を約束し、プロダクトの成長を力強くサポートします。</p>
                     </div>
                 </div>
             </div>
         </section>
-
-        <section id="philosophy" class="content-section-alt">
+        
+        <!-- 理念セクション -->
+        <section id="philosophy" class="section">
             <div class="container philosophy-container">
                 <div class="philosophy-text fade-in">
-                    <h2 class="section-title">私たちの理念</h2>
+                    <h2 class="section-title">Our Philosophy</h2>
+                    <p class="section-subtitle">私たちが大切にしていること</p>
                     <h3>"HUG the BIT"</h3>
                     <p>私たちは、一つひとつのデータ（Bit）に愛情（Hug）を込めて、テクノロジーと人との間に、温かいつながりを生み出します。ただ作るだけではない。作り手の情熱が、使う人の毎日に小さな幸せを届ける。それがHUGBITの目指すモノづくりです。</p>
                 </div>
                 <div class="philosophy-image-wrapper fade-in">
-                    <div class="philosophy-placeholder"></div>
+                    <img src="logo.png" alt="HUGBIT Logo" class="philosophy-logo">
                 </div>
             </div>
         </section>
 
-        <section id="contact" class="content-section">
+        <!-- お問い合わせセクション -->
+        <section id="contact" class="section">
             <div class="container text-center">
-                <h2 class="section-title fade-in">新しい価値を、共に創造しませんか？</h2>
-                <p class="fade-in">私たちの技術とデザインで、あなたのアイデアを最高の形で実現します。<br>まずはお気軽にご相談ください。</p>
-                <a href="mailto:contact@hugbit.com" class="cta-button fade-in">お問い合わせ</a>
+                <h2 class="section-title fade-in">世界を驚かす準備はできましたか？</h2>
+                <p class="fade-in" style="max-width: 600px; margin: 0 auto 40px;">あなたの革新的なアイデアを、HUGBITが最高の形で現実にします。<br>共に、次のスタンダードを創造しましょう。</p>
+                <a href="mailto:contact@hugbit.com" class="cta-button fade-in">プロジェクトの相談をする</a>
             </div>
         </section>
     </main>
 
+    <!-- フッター -->
     <footer class="footer">
         <div class="container">
-            <div class="footer-content">
-                <a href="#"><img src="logo.png" alt="HUGBIT Logo" class="footer-logo"></a>
-                <p>&copy; 2025 HUGBIT Inc. All rights reserved.</p>
-            </div>
+            <p>&copy; 2025 HUGBIT Inc. All rights reserved.</p>
         </div>
     </footer>
 
+    <!-- ▼ JavaScript ▼ -->
     <script>
         document.addEventListener('DOMContentLoaded', () => {
-
-            // スクロールで要素をフェードインさせる機能
+            // --- スクロールでのフェードイン処理 ---
             const fadeinElements = document.querySelectorAll('.fade-in');
-
-            const observerOptions = {
-                root: null,
-                rootMargin: '0px',
-                threshold: 0.1 // 要素が10%見えたら発火
-            };
-
-            const observer = new IntersectionObserver((entries, observer) => {
+            const observer = new IntersectionObserver((entries) => {
                 entries.forEach(entry => {
                     if (entry.isIntersecting) {
                         entry.target.classList.add('is-visible');
-                        observer.unobserve(entry.target); // 一度表示したら監視を停止
+                        observer.unobserve(entry.target);
                     }
                 });
-            }, observerOptions);
+            }, { threshold: 0.1 });
 
-            fadeinElements.forEach(el => {
-                observer.observe(el);
+            fadeinElements.forEach(el => observer.observe(el));
+
+            // --- カードのライティングエフェクト処理 ---
+            const cards = document.querySelectorAll('.process-card');
+            cards.forEach(card => {
+                card.addEventListener('mousemove', (e) => {
+                    const rect = card.getBoundingClientRect();
+                    const x = e.clientX - rect.left;
+                    const y = e.clientY - rect.top;
+                    card.style.setProperty('--mouse-x', `${x}px`);
+                    card.style.setProperty('--mouse-y', `${y}px`);
+                });
             });
-
         });
     </script>
-    </body>
+</body>
 </html>
